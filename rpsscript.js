@@ -24,42 +24,88 @@ function playRound(playerSelection, computerSelection) {
     if (userInput == 'Rock') {
         switch (computerSelection) {
             case 'Rock':
-                console.log('null match! Replay the game');
+                return 'null match! Replay the game';
                 break;
             case 'Paper':
-                console.log('You lose! Paper cover Rock');
+                return 'You lose! Paper cover Rock';
                 break;
             case 'Scissors':
-                console.log('you Win! Rock break Scissors');
+                return 'you Win! Rock break Scissors';
 
         }
     } else if (userInput == 'Paper') {
         switch (computerSelection) {
             case 'Rock':
-                console.log('You win! Paper cover Rock');
+                return 'You win! Paper cover Rock';
                 break;
             case 'Paper':
-                console.log('null match! replay the game');
+                return 'null match! replay the game';
                 break;
             case 'Scissors':
-                console.log('You lose! Scissors cut Paper');
+                return 'You lose! Scissors cut Paper';
 
         }
     } else if (userInput == 'Scissors') {
         switch (computerSelection) {
             case 'Rock':
-                console.log('You lose! Rock break Scissors');
+                return 'You lose! Rock break Scissors';
                 break;
             case 'Paper':
-                console.log('You win! Scissors cut Paper');
+                return 'You win! Scissors cut Paper';
                 break;
             case 'Scissors':
-                console.log('null match! replay the game');
+                return 'null match! replay the game';
 
         }
-    } else { console.log('something goes wrong with the comparision') }
+    } else { return 'your choice should be Rock, Paper or Scissor'; }
 }
 // let test our function playRound
-const playerSelection = 'scissors';
-const computerSelection = computerPlay()
-console.log(playRound(playerSelection, computerSelection));
+//const playerSelection = 'scissors';
+//const computerSelection = computerPlay()
+//console.log(playRound(playerSelection, computerSelection));
+
+//  a function to play five round game and output the winner 
+function game() {
+    let UserScore = 0;
+    let ComputerScore = 0;
+    for (let i = 1; i <= 5; i++) {
+
+        let UserInput = capitalizeOnlyTheFirstLater(prompt('play your round'));
+        let ComputerSelection = computerPlay();
+        let RoundResult = playRound(UserInput, ComputerSelection);
+        while (RoundResult.includes("null") || RoundResult.includes("choice")) {
+            if (RoundResult.includes('null')) {
+                ComputerSelection = computerPlay();
+                UserInput = capitalizeOnlyTheFirstLater(prompt("you have a null match replay the round"));
+                RoundResult = playRound(UserInput, ComputerSelection);
+            } else {
+                ComputerSelection = computerPlay();
+                UserInput = capitalizeOnlyTheFirstLater(prompt(`You didn't input a right choice. ${RoundResult}`));
+                RoundResult = playRound(UserInput, ComputerSelection);
+            }
+        }
+        if (RoundResult.includes("win")) {
+            //     return RoundResult;
+            console.log(RoundResult);
+            UserScore += 1;
+        } else if (RoundResult.includes("lose")) {
+            //      return RoundResult;
+            console.log(RoundResult);
+            ComputerScore += 1;
+        }
+
+
+
+    }
+    if (UserScore > ComputerScore) {
+        let winner = `You are the winner you win ${UserScore} times over 5`;
+        // return winner;
+        console.log(winner)
+    } else {
+        let winner = ` You lose! you win ${UserScore} times over 5`;
+        //   return winner ;
+        console.log(winner);
+    }
+
+}
+game();
