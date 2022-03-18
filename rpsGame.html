@@ -6,14 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors Game </title>
+    <link rel="stylesheet" href="rpsGame.css">
 </head>
 
 <body>
+
+    <div class="container">
+        <h1 class="gameName"> Rock Paper Scissors Game</h1>
+        <div class="outputScreen">
+            <div class="playerGround">
+                <h3 class="h3text">Player</h3>
+                <div class="play playerPlay">
+
+                </div>
+            </div>
+            <div class="scoreGround">
+                <h3 class="h3text">Score</h3>
+                <div class="scores">
+                    <div class="score playerScore">
+                        0
+                    </div>
+                    <div class="score computerScore">
+                        1
+                    </div>
+                </div>
+            </div>
+            <div class="computerGround">
+                <h3 class="h3text">Computer </h3>
+                <div class="play computerPlay">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="button-container">
+            <div class="button paper">
+                <img class="handImg" src="hand.png" alt="Paper" style="width:50px; height:50px;" title="Paper">
+
+            </div>
+            <div class="button Rock">
+                <img src="rock.png" alt="Rock" style="width:50px; height:50px;" title="Rock">
+            </div>
+            <div class="button scissors">
+                <img src="scissors.png" alt="Scissors" style="width:50px; height:50px;" title="Scissors">
+
+
+            </div>
+
+        </div>
+
+    </div>
+
     <script src="rpsscript.js">
-        // let test our function playRound
-        const playerSelection = 'scissors';
-        const computerSelection = computerPlay()
-        console.log(playRound(playerSelection, computerSelection));
     </script>
 
 </body>

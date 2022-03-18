@@ -1,0 +1,18 @@
+                   User Interface    Pseucode 
+                   
+                   
+           Goal 
+            
+            User start the game by clicking on a hand . he plays the game until a score of 5 from user or computer
+            
+            
+        Pseudo code 
+        
+        create a  user screen 
+         create 3 buttons 
+         in the user screen : separe it to three parts 
+                 -user play ground  left 
+                 computer playGround right
+                 - computer scores and user scores in the middle
+                 - at the end of the game output the result on the full screen 
+         Every button contain the img of the user hand centered

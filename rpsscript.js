@@ -108,4 +108,4 @@ function game() {
     }
 
 }
-game();
+//game();
