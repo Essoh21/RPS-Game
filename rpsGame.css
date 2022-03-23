@@ -26,12 +26,26 @@ body {
     margin-bottom: 40px;
     border: 2px solid #000;
     border-radius: 10px;
-    background-color: #f1f1f1;
+    background-color: #f1f1f9;
     width: 80%;
     height: 200px;
     display: flex;
+    flex-direction: column;
+}
+
+.uperOutputScreen {
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.lowerOutputScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 1000;
+    color: #f01;
+    padding-top: 30px;
 }
 
 .h3text {
@@ -41,10 +55,10 @@ body {
 }
 
 .play {
-    width: 70px;
-    height: 70px;
-    border: 1px solid #000;
-    border-radius: 50px;
+    width: 75px;
+    height: 52px;
+    border: 1px solid #f7e5ad;
+    border-radius: 15px;
     background-color: #f7e5ad;
 }
 
@@ -82,7 +96,7 @@ body {
 }
 
 .button {
-    border: 3px solid #000;
+    border: 2px solid #000;
     width: 100px;
     height: 25px;
     padding: 10px;
@@ -91,6 +105,11 @@ body {
     align-items: center;
     justify-content: center;
     background-color: rgb(170, 173, 154);
+    cursor: pointer;
+}
+
+.button:active {
+    border-color: #f1f1f1;
 }
 
 .handImg {

@@ -14,40 +14,45 @@
     <div class="container">
         <h1 class="gameName"> Rock Paper Scissors Game</h1>
         <div class="outputScreen">
-            <div class="playerGround">
-                <h3 class="h3text">Player</h3>
-                <div class="play playerPlay">
+            <div class="uperOutputScreen">
+                <div class="playerGround">
+                    <h3 class="h3text">Player</h3>
+                    <div class="play playerPlay">
 
-                </div>
-            </div>
-            <div class="scoreGround">
-                <h3 class="h3text">Score</h3>
-                <div class="scores">
-                    <div class="score playerScore">
-                        0
-                    </div>
-                    <div class="score computerScore">
-                        1
                     </div>
                 </div>
-            </div>
-            <div class="computerGround">
-                <h3 class="h3text">Computer </h3>
-                <div class="play computerPlay">
-
+                <div class="scoreGround">
+                    <h3 class="h3text">Score</h3>
+                    <div class="scores">
+                        <div class="score playerScore">
+                            0
+                        </div>
+                        <div class="score computerScore">
+                            0
+                        </div>
+                    </div>
                 </div>
+                <div class="computerGround">
+                    <h3 class="h3text">Computer </h3>
+                    <div class="play computerPlay">
+
+                    </div>
+                </div>
+            </div>
+            <div class="lowerOutputScreen">
+
             </div>
 
         </div>
         <div class="button-container">
-            <div class="button paper">
+            <div class="button paper" title="Paper" onclick="playSound();">
                 <img class="handImg" src="hand.png" alt="Paper" style="width:50px; height:50px;" title="Paper">
 
             </div>
-            <div class="button Rock">
+            <div class="button rock" title="Rock" onclick="playSound();">
                 <img src="rock.png" alt="Rock" style="width:50px; height:50px;" title="Rock">
             </div>
-            <div class="button scissors">
+            <div class="button scissors" title="Scissors" onclick="playSound();">
                 <img src="scissors.png" alt="Scissors" style="width:50px; height:50px;" title="Scissors">
 
 

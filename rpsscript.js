@@ -1,3 +1,9 @@
+// a function to play sound on click
+function playSound() {
+    let audioToPlay = new Audio();
+    audioToPlay.src = "clic.wav";
+    return audioToPlay.play();
+}
 // function computerPlay that will randomly return Rock Paper or Scissors
 function computerPlay() {
 
@@ -24,13 +30,13 @@ function playRound(playerSelection, computerSelection) {
     if (userInput == 'Rock') {
         switch (computerSelection) {
             case 'Rock':
-                return 'null match! Replay the game';
+                return 'null match! Replay the round';
                 break;
             case 'Paper':
                 return 'You lose! Paper cover Rock';
                 break;
             case 'Scissors':
-                return 'you Win! Rock break Scissors';
+                return 'You win! Rock break Scissors';
 
         }
     } else if (userInput == 'Paper') {
@@ -39,7 +45,7 @@ function playRound(playerSelection, computerSelection) {
                 return 'You win! Paper cover Rock';
                 break;
             case 'Paper':
-                return 'null match! replay the game';
+                return 'null match! replay the round';
                 break;
             case 'Scissors':
                 return 'You lose! Scissors cut Paper';
@@ -54,58 +60,122 @@ function playRound(playerSelection, computerSelection) {
                 return 'You win! Scissors cut Paper';
                 break;
             case 'Scissors':
-                return 'null match! replay the game';
+                return 'null match! replay the round';
 
         }
-    } else { return 'your choice should be Rock, Paper or Scissor'; }
+    } else { return 'Your choice should be Rock, Paper or Scissor'; }
 }
-// let test our function playRound
-//const playerSelection = 'scissors';
-//const computerSelection = computerPlay()
-//console.log(playRound(playerSelection, computerSelection));
 
-//  a function to play five round game and output the winner 
-function game() {
-    let UserScore = 0;
-    let ComputerScore = 0;
-    for (let i = 1; i <= 5; i++) {
+// output scores in the creen
+let resultsText = document.querySelector(".lowerOutputScreen");
+let userScoreOutput = document.querySelector(".score.playerScore");
+let computerScoreOutput = document.querySelector(".score.computerScore");
+// a new function to play the game on clik
+let userScore = 0;
+let computerScore = 0;
 
-        let UserInput = capitalizeOnlyTheFirstLater(prompt('play your round'));
-        let ComputerSelection = computerPlay();
-        let RoundResult = playRound(UserInput, ComputerSelection);
-        while (RoundResult.includes("null") || RoundResult.includes("choice")) {
-            if (RoundResult.includes('null')) {
-                ComputerSelection = computerPlay();
-                UserInput = capitalizeOnlyTheFirstLater(prompt("you have a null match replay the round"));
-                RoundResult = playRound(UserInput, ComputerSelection);
-            } else {
-                ComputerSelection = computerPlay();
-                UserInput = capitalizeOnlyTheFirstLater(prompt(`You didn't input a right choice. ${RoundResult}`));
-                RoundResult = playRound(UserInput, ComputerSelection);
-            }
-        }
-        if (RoundResult.includes("win")) {
-            //     return RoundResult;
-            console.log(RoundResult);
-            UserScore += 1;
-        } else if (RoundResult.includes("lose")) {
-            //      return RoundResult;
-            console.log(RoundResult);
-            ComputerScore += 1;
-        }
+function playGame(userChoice) {
+    let outputImage = document.createElement("IMG");
+    let outputimageContainer = document.createElement("div");
+
+    outputImage.setAttribute("alt", "hand");
+    outputImage.setAttribute("width", "50")
+    outputImage.setAttribute("style", "backgrounColor: #00f");
+    playerHandBox.appendChild(outputImage);
+    computerHanBox.appendChild(outputImage);
+
+    let computerHand = computerPlay();
+    switch (userChoice) {
+        case 'Paper':
+
+            outputImage.setAttribute("src", "hand.png");
+            outputImage.style = "transform: rotate(90deg)";
+            outputimageContainer.appendChild(outputImage);
+            playerHandBox.innerHTML = outputimageContainer.innerHTML;
+
+            break;
+        case 'Rock':
+
+            outputImage.setAttribute("src", "rock.png");
+            outputImage.style = "transform: rotate(90deg)";
+            outputimageContainer.appendChild(outputImage);
+            playerHandBox.innerHTML = outputimageContainer.innerHTML;
+            break;
+        case "Scissors":
+
+            outputImage.setAttribute("src", "scissors.png");
+
+            outputimageContainer.appendChild(outputImage);
+            playerHandBox.innerHTML = outputimageContainer.innerHTML;
+            break;
+    }
+    switch (computerHand) {
+
+        case 'Paper':
+
+            outputImage.setAttribute("src", "hand.png");
+            outputImage.style = "transform: rotate(-90deg) rotateY(180deg)";
+            outputimageContainer.appendChild(outputImage);
+            computerHanBox.innerHTML = outputimageContainer.innerHTML;
 
 
+            break;
+        case 'Rock':
+
+            outputImage.setAttribute("src", "rock.png");
+            outputImage.style = "transform: rotate(-90deg) rotateY(180deg)";
+            outputimageContainer.appendChild(outputImage);
+            computerHanBox.innerHTML = outputimageContainer.innerHTML;
+            break;
+        case 'Scissors':
+            imageCName = ".button.scissors";
+            outputImage.setAttribute("src", "scissors.png");
+            outputImage.style = "transform: rotateY(180deg)";
+            outputimageContainer.appendChild(outputImage);
+            computerHanBox.innerHTML = outputimageContainer.innerHTML;
 
     }
-    if (UserScore > ComputerScore) {
-        let winner = `You are the winner you win ${UserScore} times over 5`;
-        // return winner;
-        console.log(winner)
+
+    let roundResult = playRound(userChoice, computerHand);
+    if (userScore > 4 || computerScore > 4) {
+        userScore = 0;
+        computerScore = 0;
+    }
+
+    if (roundResult.includes("win")) {
+        userScore += 1;
+        resultsText.innerHTML = roundResult;
+        resultsText.style.color = "#838b0f";
+        userScoreOutput.innerHTML = userScore;
+        computerScoreOutput.innerHTML = computerScore;
+    } else if (roundResult.includes("lose")) {
+        computerScore += 1;
+        computerScoreOutput.innerHTML = computerScore;
+        userScoreOutput.innerHTML = userScore;
+        resultsText.style.color = "#F00";
+        resultsText.innerHTML = roundResult;
+
     } else {
-        let winner = ` You lose! you win ${UserScore} times over 5`;
-        //   return winner ;
-        console.log(winner);
+        resultsText.style.color = "#99f";
+        resultsText.innerHTML = roundResult;
+    }
+    if (userScore == 5 || computerScore == 5) {
+        if (computerScore == 5) {
+            resultsText.style.color = "#f50"
+            resultsText.innerHTML = "Game over!Computer is the winner";
+        } else {
+            resultsText.style.color = "#0de";
+            resultsText.innerHTML = "Congratulation! You are the winner ";
+        }
     }
 
 }
-//game();
+
+let playerHandBox = document.querySelector(".play.playerPlay");
+let computerHanBox = document.querySelector(".play.computerPlay");
+let paperButton = document.querySelector(".button.paper");
+let rockButton = document.querySelector(".button.rock");
+let scissorsButton = document.querySelector(".button.scissors");
+paperButton.addEventListener("click", () => playGame("Paper"));
+rockButton.addEventListener("click", () => playGame("Rock"));
+scissorsButton.addEventListener("click", () => playGame("Scissors"));

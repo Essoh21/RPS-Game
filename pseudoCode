@@ -1,0 +1,7 @@
+        goal set the backend to play the game rps
+        
+        attach a play to every click of rock paper or scissors 
+        output hand images in play grounds
+        output scores of every game 
+        when either of the player have a score of 5 declare he is a winer 
+        and restart the game 
