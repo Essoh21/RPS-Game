@@ -115,3 +115,8 @@ body {
 .handImg {
     transform: rotate(90deg);
 }
+
+.copyright {
+    font-weight: bold;
+    font-size: 12px;
+}
