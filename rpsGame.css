@@ -120,3 +120,31 @@ body {
     font-weight: bold;
     font-size: 12px;
 }
+
+
+/* small devices*/
+
+@media only screen and (max-width:415px) {
+    .gameName {
+        font-size: 20px;
+    }
+    .h3text {
+        font-weight: 700;
+        font-size: 15px;
+    }
+    img {
+        width: 30px;
+    }
+    .play {
+        width: 40px;
+        height: 30px;
+        border-radius: 10px;
+    }
+    .button {
+        width: 45px;
+        height: 30px;
+    }
+    .score {
+        font-size: 15px;
+    }
+}
